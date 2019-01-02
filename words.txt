@@ -1,0 +1,48 @@
+companion | spolecnik | False | False | False | False | /home/martin/accent/accent-example.mp3
+clues | voditka | False | False | False | False | /home/martin/accent/accent-example.mp3
+swiftly | rychle | False | False | False | False | /home/martin/accent/accent-example.mp3
+say farewell | rozloucit se | False | False | False | False | /home/martin/accent/accent-example.mp3
+pacing up and down | chodit sem a tam | False | False | False | False | /home/martin/accent/accent-example.mp3
+recognizable | rozeznat | False | False | False | False | /home/martin/accent/accent-example.mp3
+gaunt | vyhubly | False | False | False | False | /home/martin/accent/accent-example.mp3
+cloak | plast | False | False | False | False | /home/martin/accent/accent-example.mp3
+deerstalker hat | lovecka cepice | False | False | False | False | /home/martin/accent/accent-example.mp3
+rely on somebody | spolehat se na nekoho | False | False | False | False | /home/martin/accent/accent-example.mp3
+carriage | vagon | False | False | False | False | /home/martin/accent/accent-example.mp3
+ourselves | pro sebe | False | False | False | False | /home/martin/accent/accent-example.mp3
+pile | hromada | True | False | False | False | /home/martin/accent/accent-example.mp3
+udelat poznamku | udelat poznamku  | False | False | False | False | /home/martin/accent/accent-example.mp3
+luggage | zavazadlo | False | False | False | False | /home/martin/accent/accent-example.mp3
+rack | police | False | False | False | False | /home/martin/accent/accent-example.mp3
+ordinary | obycejny | False | False | False | False | /home/martin/accent/accent-example.mp3
+seems | zda se | False | False | False | False | /home/martin/accent/accent-example.mp3
+against | proti | False | False | False | False | /home/martin/accent/accent-example.mp3
+let out | pronajmout | False | False | False | False | /home/martin/accent/accent-example.mp3
+neither | zadna | False | False | False | False | /home/martin/accent/accent-example.mp3
+lake | jezero | False | False | False | False | /home/martin/accent/accent-example.mp3
+servant | sluha | False | False | False | False | /home/martin/accent/accent-example.mp3
+appointment | schuzka | False | False | False | False | /home/martin/accent/accent-example.mp3
+gamekeeper | hajny | False | False | False | False | /home/martin/accent/accent-example.mp3
+witness | svedek | False | False | False | False | /home/martin/accent/accent-example.mp3
+lodgekeeper | vratny | False | False | False | False | /home/martin/accent/accent-example.mp3
+pick | trhat | False | False | False | False | /home/martin/accent/accent-example.mp3
+violent | ostry | False | False | False | False | /home/martin/accent/accent-example.mp3
+quarrel | hadka | False | False | False | False | /home/martin/accent/accent-example.mp3
+strike | uderit | False | False | False | False | /home/martin/accent/accent-example.mp3
+almost | temer | False | False | False | False | /home/martin/accent/accent-example.mp3
+run up | pribehnout | False | False | False | False | /home/martin/accent/accent-example.mp3
+by the side of the pool | na brehu jezera | False | False | False | False | /home/martin/accent/accent-example.mp3
+beat | rozbit | False | False | False | False | /home/martin/accent/accent-example.mp3
+blows | udery | False | False | False | False | /home/martin/accent/accent-example.mp3
+blunt | tupy | False | False | False | False | /home/martin/accent/accent-example.mp3
+butt-end | pazba | False | False | False | False | /home/martin/accent/accent-example.mp3
+arrest | zatknout | False | False | False | False | /home/martin/accent/accent-example.mp3
+charge | obvinit | False | False | False | False | /home/martin/accent/accent-example.mp3
+exceedingly grave | nesmirne vazne | False | False | False | False | /home/martin/accent/accent-example.mp3
+indeed | vskutku | False | False | False | False | /home/martin/accent/accent-example.mp3
+according to somebody | podle nekoho | False | False | False | False | /home/martin/accent/accent-example.mp3
+a dreadful cry | priserny krik | False | False | False | False | /home/martin/accent/accent-example.mp3
+precisely | presne | False | False | False | False | /home/martin/accent/accent-example.mp3
+matter | zalezitost | True | False | False | False | /home/martin/accent/accent-example.mp3
+refused | odmitnout | False | False | False | False | /home/martin/accent/accent-example.mp3
+quite so | presne tak | False | False | False | False | /home/martin/accent/accent-example.mp3
