@@ -4,7 +4,7 @@ import random
 import copy
 
 CHOICE_WORDS_NUM = 10
-WORDS_NUM = 2
+WORDS_NUM = 20
 
 
 class Word:
