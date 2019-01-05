@@ -95,7 +95,8 @@ def get_random_words(words, num):
 
 def print_choice_question(lang, word):
     word_list = get_random_words(ALL_WORDS, CHOICE_WORDS_NUM)
-    word_list[random.choice(range(len(word_list)))] = word
+    if word not in word_list:
+        word_list[random.choice(range(len(word_list)))] = word
 
     if lang == "en-cz":
         print "Vyberte spravne ceske slovo pro slovo '"+str(word.eng)+"' :\n"
