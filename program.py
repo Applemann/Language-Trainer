@@ -2,6 +2,7 @@
 
 import random
 import copy
+import os
 
 CHOICE_WORDS_NUM = 10
 WORDS_NUM = 20
@@ -108,13 +109,14 @@ def check_input(lang, type, word, input):
     if (input == "p"):
         print "Prehravam vyslovnost"
 
+def play_sound(word):
+    os.system('espeak "'+word+'" -s 150')
 
 
 ALL_WORDS = get_words_from_db()
 all_words = get_random_words(ALL_WORDS, WORDS_NUM)
 
 def main():
-
     while len(all_words) > 0:
         save_words()
         print "Zbyva celkem: " + str(len(all_words)) + " slov.\n"
@@ -123,7 +125,13 @@ def main():
 
         if random_word.en_to_cz_choice == False:
             print_choice_question("en-cz", random_word)
+            play_sound(random_word.eng)
             trans_word = raw_input()
+
+            while trans_word == "p":
+                play_sound(random_word.eng)
+                trans_word = raw_input()
+
 
             print(chr(27) + "[2J")
             print str(random_word.eng) + " -> " + str(trans_word)
@@ -148,14 +156,20 @@ def main():
             print_choice_question("cz-en", random_word)
             trans_word = raw_input()
 
+            while trans_word == "p":
+                play_sound(random_word.eng)
+                trans_word = raw_input()
+
             print(chr(27) + "[2J")
             print str(random_word.cze) + " -> " + str(trans_word)
             if trans_word == random_word.eng:
                 random_word.cz_to_en_choice = True
                 print "Spravne"
+                play_sound(random_word.eng)
                 all_words.remove(random_word)
             else:
                 print "Spatne. Spravne je: " + random_word.eng
+                play_sound(random_word.eng)
                 right = raw_input("Nebo si myslite neco jineho?? (N/y) ")
                 if right == 'y': 
                     random_word.cz_to_en_choice = True
@@ -169,7 +183,12 @@ def main():
 
         elif random_word.en_to_cz_trans == False:
             print_trans_question("en-cz", random_word)
+            play_sound(random_word.eng)
             trans_word = raw_input()
+
+            while trans_word == "p":
+                play_sound(random_word.eng)
+                trans_word = raw_input()
 
             print(chr(27) + "[2J")
             print str(random_word.eng) + " -> " + str(trans_word)
@@ -179,11 +198,11 @@ def main():
                 all_words.remove(random_word)
             else:
                 print "Spatne. Spravne je: " + random_word.cze
+                all_words.remove(random_word)
                 right = raw_input("Nebo si myslite neco jineho?? (N/y) ")
                 if right == 'y': 
                     random_word.en_to_cz_trans = True
                     print "Spravne"
-                    all_words.remove(random_word)
                     print "\n"
                     continue
                 print "Spatne. Spravne je: " + random_word.cze
@@ -195,14 +214,20 @@ def main():
             print_trans_question("cz-en", random_word)
             trans_word = raw_input()
 
+            while trans_word == "p":
+                play_sound(random_word.eng)
+                trans_word = raw_input()
+
             print(chr(27) + "[2J")
             print str(random_word.cze) + " -> " + str(trans_word)
             if trans_word == random_word.eng:
                 random_word.cz_to_en_trans = True
                 print "Spravne"
+                play_sound(random_word.eng)
                 all_words.remove(random_word)
             else:
                 print "Spatne. Spravne je: " + random_word.eng
+                play_sound(random_word.eng)
                 right = raw_input("Nebo si myslite neco jineho?? (N/y) ")
                 if right == 'y': 
                     random_word.cz_to_en_trans = True
