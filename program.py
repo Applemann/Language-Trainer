@@ -3,6 +3,10 @@
 import random
 import copy
 import os
+import json
+import urllib
+import urllib2
+from time import sleep
 
 CHOICE_WORDS_NUM = 10
 WORDS_NUM = 20
@@ -59,18 +63,18 @@ def get_words_from_db():
         word.cz_to_en_choice = str2bool(line[3])
         word.en_to_cz_trans = str2bool(line[4])
         word.cz_to_en_trans = str2bool(line[5])
-        word.accent = line[6]
+        #word.accent = line[6]
 
         words.append(word)
 
     return words
 
 
-def print_trans_question(lang):
+def print_trans_question(lang, word):
     if lang == "en-cz":
-        print "Prelozte z anglictiny do cestiny:\n"
+        print "Prelozte z anglictiny do cestiny slovo '"+word+"':\n"
     elif lang == "cz-en":
-        print "Prelozte z cestiny do anglictiny:\n"
+        print "Prelozte z cestiny do anglictiny slovo '"+word+"':\n"
 
 
 def get_random_words(words, num):
@@ -102,18 +106,24 @@ def print_choice_question(lang, word):
         print ", ".join(map(lambda x: x.eng, word_list))
 
 
-def check_input(lang, type, word, input):
-    if (input == "q" or input == "x"):
-        print "Predcasne ukonceni."
-
-    if (input == "p"):
-        print "Prehravam vyslovnost"
-
 def play_sound(word):
-    os.system('espeak "'+word+'" -s 150')
+    os.system('bash -c \'cvlc "sounds/'+word+'.mp3" vlc://quit &> /dev/null\'')
+    sleep(1)
+    
 
+
+def download_sound(word):
+    os.system('./download-sound.sh "' + word+'"')
 
 ALL_WORDS = get_words_from_db()
+
+
+#for word in ALL_WORDS:
+#    print word.eng
+#    download_sound(word.eng)
+#play_sound(word)
+
+
 all_words = get_random_words(ALL_WORDS, WORDS_NUM)
 
 def main():
