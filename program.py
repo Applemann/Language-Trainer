@@ -65,6 +65,8 @@ def get_words_from_db():
         word.cz_to_en_trans = str2bool(line[5])
         word.accent = line[6]
 
+        if word.en_to_cz_choice == True && word.cz_to_en_choice == True && word.en_to_cz_trans == True && word.cz_to_en_trans == True word.accent == True:
+            continue
         words.append(word)
 
     return words
@@ -217,7 +219,7 @@ def main():
                     print "\n"
                     continue
                 print "Spatne. Spravne je: " + random_word.cze
-                random_word.en_to_cz_choice = False
+                #random_word.en_to_cz_choice = False
             print "\n"
             continue
 
@@ -247,7 +249,7 @@ def main():
                     print "\n"
                     continue
                 print "Spatne. Spravne je: " + random_word.eng
-                random_word.cz_to_en_choice = False
+                #random_word.cz_to_en_choice = False
             print "\n"
             continue
         elif random_word.according != True:
