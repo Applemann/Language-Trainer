@@ -63,7 +63,7 @@ def get_words_from_db():
         word.cz_to_en_choice = str2bool(line[3])
         word.en_to_cz_trans = str2bool(line[4])
         word.cz_to_en_trans = str2bool(line[5])
-        #word.accent = line[6]
+        word.accent = line[6]
 
         words.append(word)
 
@@ -72,9 +72,9 @@ def get_words_from_db():
 
 def print_trans_question(lang, word):
     if lang == "en-cz":
-        print "Prelozte z anglictiny do cestiny slovo '"+word+"':\n"
+        print "Prelozte z anglictiny do cestiny slovo '"+word.eng+"':\n"
     elif lang == "cz-en":
-        print "Prelozte z cestiny do anglictiny slovo '"+word+"':\n"
+        print "Prelozte z cestiny do anglictiny slovo '"+word.cze+"':\n"
 
 
 def get_random_words(words, num):
@@ -108,7 +108,7 @@ def print_choice_question(lang, word):
 
 def play_sound(word):
     os.system('bash -c \'cvlc "sounds/'+word+'.mp3" vlc://quit &> /dev/null\'')
-    sleep(1)
+    #sleep(1)
     
 
 
@@ -224,9 +224,9 @@ def main():
             print_trans_question("cz-en", random_word)
             trans_word = raw_input()
 
-            while trans_word == "p":
-                play_sound(random_word.eng)
-                trans_word = raw_input()
+            #while trans_word == "p":
+            #    play_sound(random_word.eng)
+            #    trans_word = raw_input()
 
             print(chr(27) + "[2J")
             print str(random_word.cze) + " -> " + str(trans_word)
@@ -247,6 +247,38 @@ def main():
                     continue
                 print "Spatne. Spravne je: " + random_word.eng
                 random_word.cz_to_en_choice = False
+            print "\n"
+            continue
+        elif random_word.according != True:
+            print "Napiste co slysite:"
+            trans_word = raw_input()
+
+            while trans_word == "p":
+                play_sound(random_word.eng)
+                trans_word = raw_input()
+
+            print(chr(27) + "[2J")
+            #print str(random_word.cze) + " -> " + str(trans_word)
+            if trans_word == random_word.eng:
+                print "Spravne"
+                print "A ted napiste co to znamena v cestine:"
+                trans_word = raw_input()
+                if trans_word == random_word.cze:
+                    print "Opet spravne."
+                    print "Vypada to, ze toto slovicko uz umis ;-)"
+                    random_word.according = True
+                    play_sound(random_word.eng)
+                    all_words.remove(random_word)
+                else:
+                    print "Spatne. Spravne je: " + random_word.cze
+                    play_sound(random_word.eng)
+                    random_word.en_to_cz_choice = False
+                    continue
+
+            else:
+                print "Spatne. Spravne je: " + random_word.eng
+                play_sound(random_word.eng)
+
             print "\n"
             continue
         else:
