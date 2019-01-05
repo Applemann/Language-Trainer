@@ -4,6 +4,7 @@ import random
 import copy
 
 CHOICE_WORDS_NUM = 10
+WORDS_NUM = 2
 
 
 class Word:
@@ -71,16 +72,24 @@ def print_trans_question(lang):
         print "Prelozte z cestiny do anglictiny:\n"
 
 
-def get_random_words():
+def get_random_words(words, num):
+    if len(words) < num:
+        print "Malo moznych slov ve slovniku!!"
+        exit()
+    words = copy.copy(words)
     select_words = []
-    for i in range(CHOICE_WORDS_NUM):
-        select_words.append(random.choice(ALL_WORDS))
+    for i in range(num):
+        rand_word = random.choice(words)
+        while rand_word in select_words:
+            words.remove(rand_word)
+            rand_word = random.choice(words)
+        select_words.append(rand_word)
 
     return select_words
 
 
 def print_choice_question(lang, word):
-    word_list = get_random_words()
+    word_list = get_random_words(ALL_WORDS, CHOICE_WORDS_NUM)
     word_list[random.choice(range(len(word_list)))] = word
 
     if lang == "en-cz":
@@ -98,20 +107,17 @@ def check_input(lang, type, word, input):
 
     if (input == "p"):
         print "Prehravam vyslovnost"
-        input = raw_input(random_word[rand_index] + ": ")
 
 
 
-all_words = get_words_from_db()
-ALL_WORDS = copy.copy(all_words)
-WORDS_NUM = 20
+ALL_WORDS = get_words_from_db()
+all_words = get_random_words(ALL_WORDS, WORDS_NUM)
 
 def main():
 
-    words_num = copy.copy(WORDS_NUM)
-    while words_num > 0:
+    while len(all_words) > 0:
         save_words()
-        print "Zbyva celkem: " + str(words_num) + " slov.\n"
+        print "Zbyva celkem: " + str(len(all_words)) + " slov.\n"
 
         random_word = random.choice(all_words)
 
@@ -125,7 +131,6 @@ def main():
                 random_word.en_to_cz_choice = True
                 print "Spravne"
                 all_words.remove(random_word)
-                words_num -= 1
             else:
                 print "Spatne. Spravne je: " + random_word.cze
                 right = raw_input("Nebo si myslite neco jineho?? (N/y) ")
@@ -133,7 +138,6 @@ def main():
                     random_word.en_to_cz_choice = True
                     print "Spravne"
                     all_words.remove(random_word)
-                    words_num -= 1
                     print "\n"
                     continue
                 print "Spatne. Spravne je: " + random_word.cze
@@ -150,7 +154,6 @@ def main():
                 random_word.cz_to_en_choice = True
                 print "Spravne"
                 all_words.remove(random_word)
-                words_num -= 1
             else:
                 print "Spatne. Spravne je: " + random_word.eng
                 right = raw_input("Nebo si myslite neco jineho?? (N/y) ")
@@ -158,7 +161,6 @@ def main():
                     random_word.cz_to_en_choice = True
                     print "Spravne"
                     all_words.remove(random_word)
-                    words_num -= 1
                     print "\n"
                     continue
                 print "Spatne. Spravne je: " + random_word.eng
@@ -175,7 +177,6 @@ def main():
                 random_word.en_to_cz_trans = True
                 print "Spravne"
                 all_words.remove(random_word)
-                words_num -= 1
             else:
                 print "Spatne. Spravne je: " + random_word.cze
                 right = raw_input("Nebo si myslite neco jineho?? (N/y) ")
@@ -183,7 +184,6 @@ def main():
                     random_word.en_to_cz_trans = True
                     print "Spravne"
                     all_words.remove(random_word)
-                    words_num -= 1
                     print "\n"
                     continue
                 print "Spatne. Spravne je: " + random_word.cze
@@ -201,7 +201,6 @@ def main():
                 random_word.cz_to_en_trans = True
                 print "Spravne"
                 all_words.remove(random_word)
-                words_num -= 1
             else:
                 print "Spatne. Spravne je: " + random_word.eng
                 right = raw_input("Nebo si myslite neco jineho?? (N/y) ")
@@ -209,7 +208,6 @@ def main():
                     random_word.cz_to_en_trans = True
                     print "Spravne"
                     all_words.remove(random_word)
-                    words_num -= 1
                     print "\n"
                     continue
                 print "Spatne. Spravne je: " + random_word.eng
@@ -223,4 +221,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-    print "Uspesne jste se naucili prelozit celkem: ", WORDS_NUM, "slov. :-)"
+    save_words()
+    print "Gratuluji. Uspesne jste se naucili prelozit celkem: ", WORDS_NUM, "slov. :-)"
