@@ -20,6 +20,10 @@ def load_words():
     return lines
 
 
+def download_sound(word):
+    os.system('./download-sound.sh "' + word + '"')
+
+
 def save_words(words):
     f = open("words.txt", 'a')
     for word in words:
@@ -33,6 +37,7 @@ def save_words(words):
                 word.accent
             ]
         f.write(" | ".join(map(lambda x: str(x), w)) + "\n")
+        download_sound(word.eng)
     f.close()
 
 
