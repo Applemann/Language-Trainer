@@ -107,7 +107,7 @@ ALL_WORDS = copy.copy(all_words)
 
 def main():
 
-    while len(all_words) > 0:
+    while len(all_words) > 20:
         save_words()
         print "Zbyva celkem: " + str(len(all_words)) + " slov.\n"
 
@@ -117,8 +117,11 @@ def main():
             print_choice_question("en-cz", random_word)
             trans_word = raw_input()
 
-            print trans_word
-            if trans_word == random_word.cze:
+            print trans_word, "==", random_word.cze
+            right = raw_input("Spravne?? (N/y) ")
+            print(chr(27) + "[2J")
+            print str(random_word.eng) + " -> " + str(trans_word)
+            if trans_word == random_word.cze or right == "y":
                 random_word.en_to_cz_choice = True
                 print "Spravne"
                 all_words.remove(random_word)
@@ -131,8 +134,11 @@ def main():
             print_choice_question("cz-en", random_word)
             trans_word = raw_input()
 
-            print trans_word
-            if trans_word == random_word.eng:
+            print trans_word, "==", random_word.cze
+            right = raw_input("Spravne?? (N/y) ")
+            print(chr(27) + "[2J")
+            print str(random_word.cze) + " -> " + str(trans_word)
+            if trans_word == random_word.eng or right == "y":
                 random_word.cz_to_en_choice = True
                 print "Spravne"
                 all_words.remove(random_word)
@@ -145,13 +151,17 @@ def main():
             print_trans_question("en-cz", random_word)
             trans_word = raw_input()
 
-            print trans_word
-            if trans_word == random_word.cze:
+            print trans_word, "==", random_word.cze
+            right = raw_input("Spravne?? (N/y) ")
+            print(chr(27) + "[2J")
+            print str(random_word.eng) + " -> " + str(trans_word)
+            if trans_word == random_word.cze or right == "y":
                 random_word.en_to_cz_trans = True
                 print "Spravne"
                 all_words.remove(random_word)
             else:
                 print "Spatne. Spravne je: " + random_word.cze
+                random_word.en_to_cz_choice = False
             print "\n"
             continue
 
@@ -159,15 +169,22 @@ def main():
             print_trans_question("cz-en", random_word)
             trans_word = raw_input()
 
-            print trans_word
-            if trans_word == random_word.eng:
+            print trans_word, "==", random_word.eng
+            right = raw_input("Spravne?? (N/y) ")
+            print(chr(27) + "[2J")
+            print str(random_word.cze) + " -> " + str(trans_word)
+            if trans_word == random_word.eng or right == "y":
                 random_word.cz_to_en_trans = True
                 print "Spravne"
                 all_words.remove(random_word)
             else:
                 print "Spatne. Spravne je: " + random_word.eng
+                random_word.cz_to_en_choice = False
             print "\n"
             continue
+        else:
+            all_words.remove(random_word)
+
 
 
 if __name__ == "__main__":
